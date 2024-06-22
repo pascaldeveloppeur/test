@@ -13,10 +13,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+
 
 @Entity
 @Table(name = "ecommerce-user")
@@ -37,7 +40,13 @@ public class User implements Serializable {
 	@NotNull(message = "username cannot be null")
 	@Column(name = "name", length = 20)
     private String username;
+	
+	@NotNull
+	@Column(name = "password",unique = true)
     private String password;
+    
+    @NotNull(message = "email cannot be null")
+	@Column(name ="email", unique = true, nullable = false)
     private String email;
 
 }
