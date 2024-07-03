@@ -1,2 +1,2 @@
 rootProject.name = 'Ecommerce-user-service'
-includeFlat 'pascaldev-multitenant-jpa', 'pascaldev-utils-service'
+includeFlat 'Ecommerce-multitenant-jpa', 'Ecommerce-utils-service'

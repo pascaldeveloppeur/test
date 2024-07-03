@@ -37,15 +37,15 @@ ext {
 }
 
 dependencies {
-    implementation project(':pascaldev-multitenant-jpa')
-    implementation project(':pascaldev-utils-service')
+    implementation project(':Ecommerce-multitenant-jpa')
+    implementation project(':Ecommerce-utils-service')
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
 	implementation  'org.springframework.cloud:spring-cloud-starter-bootstrap'
-	implementation 'org.flywaydb:flyway-core'
-	implementation 'org.flywaydb:flyway-database-postgresql'
+	//implementation 'org.flywaydb:flyway-core'
+	//implementation 'org.flywaydb:flyway-database-postgresql'
 	implementation 'org.springframework.cloud:spring-cloud-starter'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
