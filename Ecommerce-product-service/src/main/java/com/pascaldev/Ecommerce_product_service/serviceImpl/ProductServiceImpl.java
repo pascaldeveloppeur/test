@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductDto> getAll() {
-		log.trace("try  to find all members");
+		log.trace("try  to find all products");
 		Page<Product> items = productRepository.findAll(PageRequest.of(0, 5));
 		List<Product> productList = items.getContent();
 		if (productList.isEmpty()) {
@@ -64,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductDto save(ProductDto productDto) {
-		log.trace("try to save use : {}", productDto);
+		log.trace("try to save product : {}", productDto);
 
 		try {
 			if (productDto == null) {
