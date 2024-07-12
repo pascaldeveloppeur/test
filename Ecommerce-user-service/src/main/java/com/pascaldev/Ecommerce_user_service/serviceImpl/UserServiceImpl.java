@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -25,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserServiceImpl implements UserService<UserDto> {
 
 	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
 //	private final MessageSource messageSource;
 	@Override
 	public UserDto getById(Long id) {
@@ -80,6 +82,7 @@ public class UserServiceImpl implements UserService<UserDto> {
 				log.trace("this user already exist");
 				return null;
 			}
+			userDto.setPassword(passwordEncoder.encode(userDto.getPassword())) ;
 			User newUser = userRepository.save(UserDto.fromUserDto(userDto));
 			return UserDto.fromUser(newUser);
 		

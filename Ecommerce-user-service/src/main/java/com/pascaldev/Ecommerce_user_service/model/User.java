@@ -6,8 +6,12 @@ package com.pascaldev.Ecommerce_user_service.model;
 
 import java.io.Serializable;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -48,5 +52,9 @@ public class User implements Serializable {
     @NotNull(message = "email cannot be null")
 	@Column(name ="email", unique = true, nullable = false)
     private String email;
+    
+    @NotNull
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 }

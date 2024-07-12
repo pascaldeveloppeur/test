@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.math.stat.descriptive.summary.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.pascaldev.Ecommerce_order_service.Dto.OrderDto;
+import com.pascaldev.Ecommerce_order_service.client.ProductClient;
 import com.pascaldev.Ecommerce_order_service.model.Order;
 import com.pascaldev.Ecommerce_order_service.repository.OrderRepository;
 import com.pascaldev.Ecommerce_order_service.service.OrderService;
@@ -25,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 public class OrderServiceImpl implements OrderService {
 	
 	private final OrderRepository orderRepository;
+	private final ProductClient productClient;
 
 	@Override
 	public OrderDto getById(Long id) {
@@ -73,11 +76,19 @@ public class OrderServiceImpl implements OrderService {
 			if (orderDto.getId().equals(null)) {
 				throw new PascalDevException("unable.save.order.with.empty.id");
 			}
+			
 			Optional<Order> order = orderRepository.findById(OrderDto.fromOderDto(orderDto).getId());
 			if (order.isPresent()) {
 				log.trace("this order already exist");
 				return null;
 			}
+			orderDto.getProductIds().forEach(productId -> {
+				ProductClient.Product product = productClient.getProductById(productId);
+				if(product.equals(null)) {
+					throw new PascalDevException("unable.save.order.with.null.products");
+				}
+				
+			});
 			Order newOrder = orderRepository.save(OrderDto.fromOderDto(orderDto));
 			return OrderDto.fromOrder(newOrder);
 

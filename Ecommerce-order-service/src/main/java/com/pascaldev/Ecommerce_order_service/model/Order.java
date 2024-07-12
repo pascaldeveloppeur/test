@@ -1,14 +1,17 @@
 package com.pascaldev.Ecommerce_order_service.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,5 +43,9 @@ public class Order implements Serializable {
 	@NotNull
 	@Column(name = "totalAmount")
 	private Double totalAmount;
+	
+	@Column(name = "order_product_ids")
+	@ElementCollection
+	private List<Long> productIds;
 
 }

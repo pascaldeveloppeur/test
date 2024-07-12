@@ -1,5 +1,7 @@
 package com.pascaldev.Ecommerce_order_service.Dto;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 
 import com.pascaldev.Ecommerce_order_service.model.Order;
@@ -12,6 +14,7 @@ public class OrderDto {
 	private Long id;
 	private Long userId;
 	private Double totalAmount;
+	private List<Long> productIds;
 	
 	public static OrderDto fromOrder(Order order) {
 		ModelMapper modelMapper = new ModelMapper();
