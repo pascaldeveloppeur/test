@@ -40,7 +40,7 @@ public class Product implements Serializable {
 	@NotNull(message = "description cannot be null")
 	@Column(name = "description", length = 100)
 	private String description;
-	
+	 
 	@NotNull(message = "price cannot be null")
 	@Column(name = "price")
 	private Double price;
