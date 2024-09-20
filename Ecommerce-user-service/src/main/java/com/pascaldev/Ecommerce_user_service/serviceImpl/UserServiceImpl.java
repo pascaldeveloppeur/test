@@ -26,8 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 public class UserServiceImpl implements UserService<UserDto> {
 
 	private final UserRepository userRepository;
-	private final PasswordEncoder passwordEncoder;
-//	private final MessageSource messageSource;
 	@Override
 	public UserDto getById(Long id) {
 		log.trace("try to get user by id  : {}", id);
@@ -82,7 +80,7 @@ public class UserServiceImpl implements UserService<UserDto> {
 				log.trace("this user already exist");
 				return null;
 			}
-			userDto.setPassword(passwordEncoder.encode(userDto.getPassword())) ;
+			//userDto.setPassword(passwordEncoder.encode(userDto.getPassword())) ;
 			User newUser = userRepository.save(UserDto.fromUserDto(userDto));
 			return UserDto.fromUser(newUser);
 		
