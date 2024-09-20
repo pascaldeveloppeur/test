@@ -1,6 +1,10 @@
 package com.pascaldev.Ecommerce_utils_service.service;
 
 import java.util.List;
+/**
+ * 
+ * @author Pascal Dev
+ */
 
 public interface AbstractService <T> {
 	
