@@ -8,21 +8,11 @@ group = 'com.pascaldev'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '21'
+	sourceCompatibility = '22'
 }
 
 configurations {
-	implementationSub
-    runtimeClasspath {
-        extendsFrom implementationSub
-    }  
-     compileClasspath {
-        extendsFrom implementationSub
-    } 
-    compileOnly {
-		extendsFrom annotationProcessor
-	}
-	testCompileOnly {
+	compileOnly {
 		extendsFrom annotationProcessor
 	}
 }

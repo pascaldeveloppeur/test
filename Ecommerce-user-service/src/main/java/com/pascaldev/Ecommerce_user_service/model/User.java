@@ -7,6 +7,8 @@ package com.pascaldev.Ecommerce_user_service.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
@@ -73,10 +75,11 @@ public class User implements Serializable {
     
     boolean enabled;
     
-    @Temporal(TemporalType.TIMESTAMP)
+   
+    @CreationTimestamp
     LocalDateTime  createdAt;
     
-    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     LocalDateTime updatedAt;
 
 }

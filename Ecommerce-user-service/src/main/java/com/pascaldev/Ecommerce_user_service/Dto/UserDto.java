@@ -1,18 +1,31 @@
 package com.pascaldev.Ecommerce_user_service.Dto;
 
+import java.time.LocalDateTime;
+
 import org.modelmapper.ModelMapper;
 
+import com.pascaldev.Ecommerce_user_service.model.Role;
 import com.pascaldev.Ecommerce_user_service.model.User;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
+
 
 @Data
+@FieldDefaults(level = AccessLevel.PRIVATE )
 public class UserDto {
 	
-	private Long id;
-	private String username;
-	private String password;
-	private String email;
+	  Long id;
+	  String username;
+	  String firstName;
+	  String lastName;
+	  String password;
+	  String email;
+	  Role role;
+	  boolean enabled;
+	  LocalDateTime  createdAt;
+	  LocalDateTime updatedAt;
 	
 	public static UserDto fromUser(User user) {
 		

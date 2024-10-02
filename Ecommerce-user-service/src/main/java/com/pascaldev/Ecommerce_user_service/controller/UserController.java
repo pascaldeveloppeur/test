@@ -18,16 +18,19 @@ import com.pascaldev.Ecommerce_user_service.Dto.UserDto;
 import com.pascaldev.Ecommerce_user_service.serviceImpl.UserServiceImpl;
 import com.pascaldev.Ecommerce_utils_service.model.PascalDevException;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/users")
 @Slf4j
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserController {
 	
-private final UserServiceImpl userServiceImpl;
+ final UserServiceImpl userServiceImpl;
 	
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)

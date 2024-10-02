@@ -17,15 +17,19 @@ import com.pascaldev.Ecommerce_user_service.repository.UserRepository;
 import com.pascaldev.Ecommerce_user_service.service.UserService;
 import com.pascaldev.Ecommerce_utils_service.model.PascalDevException;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserServiceImpl implements UserService<UserDto> {
 
-	private final UserRepository userRepository;
+	 final UserRepository userRepository;
+	 
 	@Override
 	public UserDto getById(Long id) {
 		log.trace("try to get user by id  : {}", id);
@@ -36,8 +40,7 @@ public class UserServiceImpl implements UserService<UserDto> {
 				log.trace("this user does not exist");
 				return null;
 			}
-			User newUser = user.get();
-			return UserDto.fromUser(newUser);
+			return UserDto.fromUser(user.get());
 		}catch (PascalDevException e) {
 //			String message = messageSource.getMessage("not found user",new Object[] {user}, locale);
 			throw new PascalDevException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "not found user");
@@ -51,13 +54,15 @@ public class UserServiceImpl implements UserService<UserDto> {
 	@Override
 	public List<UserDto> getAll() {
 		log.trace("try  to find all members");
+		List<UserDto> userDtoList = new ArrayList<>();
 		Page<User> items=  userRepository.findAll(PageRequest.of(0, 5));
 		List<User> userlist= items.getContent();
+		
 		if(userlist.isEmpty()) {
 			log.trace("this list is empty");
-			return null;
+			return userDtoList.stream().toList();
 		}
-		List<UserDto> userDtoList = new ArrayList<>();
+		
 		for (User user : userlist) {
 			userDtoList.add(UserDto.fromUser(user));	
 		}
@@ -78,7 +83,7 @@ public class UserServiceImpl implements UserService<UserDto> {
 			Optional<User> user = userRepository.findById(UserDto.fromUserDto(userDto).getId());
 			if(user.isPresent()) {
 				log.trace("this user already exist");
-				return null;
+				return UserDto.fromUser(user.get());
 			}
 			//userDto.setPassword(passwordEncoder.encode(userDto.getPassword())) ;
 			User newUser = userRepository.save(UserDto.fromUserDto(userDto));
@@ -95,15 +100,20 @@ public class UserServiceImpl implements UserService<UserDto> {
 	}
 
 	@Override
-	public UserDto update(Long id, UserDto userDto) {
+	public UserDto update(Long id, UserDto userDto) { 
 		User user = UserDto.fromUserDto(getById(id));
 	     if(user == null) {
 	    	 throw new PascalDevException("unable.to.update.null.user");
 	    	 
 	     }
 			user.setUsername(userDto.getUsername());
+			user.setFirstName(userDto.getFirstName());
+			user.setLastName(userDto.getLastName());
 			user.setEmail(userDto.getEmail());
 			user.setPassword(userDto.getPassword());
+			user.setRole(userDto.getRole());
+			user.setEnabled(userDto.isEnabled());
+			
 			
 		
 			UserDto savedUserDto =  save(UserDto.fromUser(user));
