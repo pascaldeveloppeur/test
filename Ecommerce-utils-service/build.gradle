@@ -8,10 +8,9 @@ group = 'com.pascaldev'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+	sourceCompatibility = '22'
 }
+
 bootJar {
   enabled = false
 }
