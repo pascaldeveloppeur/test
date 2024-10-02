@@ -1,5 +1,6 @@
 package com.pascaldev.Ecommerce_product_service.serviceImpl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.pascaldev.Ecommerce_product_service.Dto.ProductDto;
+import com.pascaldev.Ecommerce_product_service.model.Price;
 import com.pascaldev.Ecommerce_product_service.model.Product;
+import com.pascaldev.Ecommerce_product_service.model.Stock;
 import com.pascaldev.Ecommerce_product_service.repository.ProductRepository;
 import com.pascaldev.Ecommerce_product_service.service.ProductService;
 import com.pascaldev.Ecommerce_utils_service.model.PascalDevException;
@@ -36,8 +39,8 @@ public class ProductServiceImpl implements ProductService {
 				log.trace("this product does not exist");
 				return null;
 			}
-			Product newProduct = product.get();
-			return ProductDto.fromProduct(newProduct);
+		
+			return ProductDto.fromProduct(product.get());
 		} catch (PascalDevException e) {
 //			String message = messageSource.getMessage("not found product",new Object[] {product}, locale);
 			throw new PascalDevException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "not found product");
@@ -76,7 +79,7 @@ public class ProductServiceImpl implements ProductService {
 			Optional<Product> product = productRepository.findById(ProductDto.fromProductDto(productDto).getId());
 			if (product.isPresent()) {
 				log.trace("this product already exist");
-				return null;
+				return ProductDto.fromProduct(product.get());
 			}
 			Product newProduct = productRepository.save(ProductDto.fromProductDto(productDto));
 			return ProductDto.fromProduct(newProduct);
@@ -96,10 +99,12 @@ public class ProductServiceImpl implements ProductService {
 			throw new PascalDevException("unable.to.update.null.product");
 
 		}
-		product.setName(productDto.getName());
-		product.setDescription(productDto.getDescription());
-		product.setPrice(productDto.getPrice());
-		product.setQuantity(productDto.getQuantity());
+		    product.setName(productDto.getName());
+	        product.setDescription(productDto.getDescription());
+	        product.setCategory(productDto.getCategory());
+	        product.setStock(productDto.getStock());
+	        product.setPrice(productDto.getPrice());
+	        product.setUpdatedAt(LocalDateTime.now());
 
 		ProductDto savedProductDto = save(ProductDto.fromProduct(product));
 
@@ -111,7 +116,7 @@ public class ProductServiceImpl implements ProductService {
 		log.trace("try to delete product by id: {}", id);
 		try {
 			if (id == null) {
-				throw new PascalDevException("unable.to.delete.null.entity");
+				throw new PascalDevException("unable.to.delete.null.product");
 			}
 			productRepository.deleteById(id);
 		} catch (Exception e) {

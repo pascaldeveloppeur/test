@@ -18,16 +18,19 @@ import com.pascaldev.Ecommerce_product_service.Dto.ProductDto;
 import com.pascaldev.Ecommerce_product_service.serviceImpl.ProductServiceImpl;
 import com.pascaldev.Ecommerce_utils_service.model.PascalDevException;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/products")
 @Slf4j
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductController {
 	
-	private final ProductServiceImpl productServiceImpl;
+	 final ProductServiceImpl productServiceImpl;
 	
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
