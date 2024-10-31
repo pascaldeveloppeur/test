@@ -1,4 +1,4 @@
-   create table "product" (
+  create table "product" (
         "category_id" bigint,
         "created_at" timestamp(6),
         "id" bigint not null,
