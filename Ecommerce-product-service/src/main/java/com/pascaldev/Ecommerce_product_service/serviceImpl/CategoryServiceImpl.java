@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
 	
-	CategoryRepository categoryRepository;
+	final CategoryRepository categoryRepository;
 
 	@Override
 	public Category getById(Long id) {
@@ -86,7 +86,7 @@ public class CategoryServiceImpl implements CategoryService {
 			throw e;
 		} catch (Exception e) {
 			log.error("Unexpected error while save product : {}", category, e);
-			throw new PascalDevException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "unable.to.save.product");
+			throw new PascalDevException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "unable.to.save.category");
 		}
 	}
 

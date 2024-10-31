@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CategoryController {
 
-	CategoryServiceImpl categoryServiceImpl;
+	final CategoryServiceImpl categoryServiceImpl;
 	
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)

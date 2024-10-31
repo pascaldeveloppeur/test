@@ -19,6 +19,7 @@ import com.pascaldev.Ecommerce_product_service.repository.ProductRepository;
 import com.pascaldev.Ecommerce_product_service.service.ProductService;
 import com.pascaldev.Ecommerce_utils_service.model.PascalDevException;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -64,7 +65,8 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return productDtoList;
 	}
-
+    
+	@Transactional
 	@Override
 	public ProductDto save(ProductDto productDto) {
 		log.trace("try to save product : {}", productDto);
