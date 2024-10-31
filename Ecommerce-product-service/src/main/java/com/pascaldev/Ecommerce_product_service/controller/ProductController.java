@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pascaldev.Ecommerce_product_service.Dto.ProductDto;
+import com.pascaldev.Ecommerce_product_service.model.Price;
+import com.pascaldev.Ecommerce_product_service.model.Stock;
 import com.pascaldev.Ecommerce_product_service.serviceImpl.ProductServiceImpl;
 import com.pascaldev.Ecommerce_utils_service.model.PascalDevException;
 
@@ -48,6 +50,41 @@ public class ProductController {
 			return ResponseEntity.status(e.getStatusCode()).body(e.getMessage());
 		}
 	}
+	
+	@GetMapping("/{id}/stock")
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<?> getStockOfProduct(@PathVariable("id") Long id) {
+
+		log.debug("Call of get stock by productId : {}", id);
+
+		try {
+			log.trace("Found : {}", "");
+			Stock stock = productServiceImpl.getStockByProductId(id);
+
+			return ResponseEntity.status(HttpStatus.OK).body(stock);
+		} catch (PascalDevException e) {
+			log.debug(e.getMessage());
+			return ResponseEntity.status(e.getStatusCode()).body(e.getMessage());
+		}
+	}
+	
+	@GetMapping("/{id}/price")
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<?> getPriceOfProduct(@PathVariable("id") Long id) {
+
+		log.debug("Call of get price by productId : {}", id);
+
+		try {
+			log.trace("Found : {}", "");
+			Price price = productServiceImpl.getPriceByProductId(id);
+
+			return ResponseEntity.status(HttpStatus.OK).body(price);
+		} catch (PascalDevException e) {
+			log.debug(e.getMessage());
+			return ResponseEntity.status(e.getStatusCode()).body(e.getMessage());
+		}
+	}
+	
 	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
@@ -88,6 +125,30 @@ public class ProductController {
 			try {
 				ProductDto newProductDto = productServiceImpl.update(id, productDto);
 				return new ResponseEntity<>(newProductDto, HttpStatus.OK);
+			} catch (Exception e) {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+	}
+	
+	@PutMapping("/update/{id}/stock")
+	public ResponseEntity<?> updateStockOfProduct(@PathVariable("id") Long id, @RequestBody ProductDto productDto){
+		
+		 log.debug("Call of update stock : {}", id);
+			try {
+				Stock newProdStock = productServiceImpl.updateStockInProduct(id, productDto);
+				return new ResponseEntity<>(newProdStock, HttpStatus.OK);
+			} catch (Exception e) {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+	}
+	
+	@PutMapping("/update/{id}/price")
+	public ResponseEntity<?> updateStockOfPrice(@PathVariable("id") Long id, @RequestBody ProductDto productDto){
+		
+		 log.debug("Call of update stock : {}", id);
+			try {
+				Price newProdPrice = productServiceImpl.updatePriceInProduct(id, productDto);
+				return new ResponseEntity<>(newProdPrice, HttpStatus.OK);
 			} catch (Exception e) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}

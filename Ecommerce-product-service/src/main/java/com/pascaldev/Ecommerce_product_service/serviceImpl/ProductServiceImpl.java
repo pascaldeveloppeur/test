@@ -133,4 +133,72 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
+	@Override
+	public Stock getStockByProductId(Long productId) {
+		log.trace("try to get stock by productId  : {}", productId);
+
+		try {
+			Optional<Product> product = productRepository.findById(productId);
+			if (!product.isPresent()) {
+				log.trace("this product does not exist");
+				return null;
+			}
+		
+			return product.get().getStock();
+		} catch (PascalDevException e) {
+//			String message = messageSource.getMessage("not found product",new Object[] {product}, locale);
+			throw new PascalDevException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "not found product");
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public Stock updateStockInProduct(Long productId, ProductDto productDto) {
+		Product product = ProductDto.fromProductDto(getById(productId));
+		if (product == null) {
+			throw new PascalDevException("unable.to.update.null.product");
+
+		}
+		   
+	        product.setStock(productDto.getStock());
+		ProductDto savedProductDto = save(ProductDto.fromProduct(product));
+
+		return savedProductDto.getStock();
+	}
+
+	@Override
+	public Price getPriceByProductId(Long productId) {
+		log.trace("try to get price by productId  : {}", productId);
+
+		try {
+			Optional<Product> product = productRepository.findById(productId);
+			if (!product.isPresent()) {
+				log.trace("this product does not exist");
+				return null;
+			}
+		
+			return product.get().getPrice();
+		} catch (PascalDevException e) {
+//			String message = messageSource.getMessage("not found product",new Object[] {product}, locale);
+			throw new PascalDevException(HttpStatus.INTERNAL_SERVER_ERROR.value(), "not found product");
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public Price updatePriceInProduct(Long productId,ProductDto productDto) {
+		Product product = ProductDto.fromProductDto(getById(productId));
+		if (product == null) {
+			throw new PascalDevException("unable.to.update.null.product");
+
+		}
+		   
+	        product.setPrice(productDto.getPrice());
+		ProductDto savedProductDto = save(ProductDto.fromProduct(product));
+
+		return savedProductDto.getPrice();
+	}
+
 }
