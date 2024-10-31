@@ -50,7 +50,7 @@ public class User implements Serializable {
 	 Long id;
 
 	@NotNull(message = "username cannot be null")
-	@Column(name = "username", length = 20)
+	@Column(name = "username", length = 20,unique = true)
      String username;
 	
 	@NotNull
