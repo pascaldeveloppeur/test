@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Ecommerce-multitenant-jpa" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Ecommerce-multitenant-jpa" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Ecommerce-order-service" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Ecommerce-multitenant-jpa" />
+            <option value="$PROJECT_DIR$/Ecommerce-order-service" />
+            <option value="$PROJECT_DIR$/Ecommerce-utils-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Ecommerce-payment-service" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Ecommerce-payment-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Ecommerce-product-service" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Ecommerce-multitenant-jpa" />
+            <option value="$PROJECT_DIR$/Ecommerce-product-service" />
+            <option value="$PROJECT_DIR$/Ecommerce-utils-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Ecommerce-user-service" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Ecommerce-multitenant-jpa" />
+            <option value="$PROJECT_DIR$/Ecommerce-user-service" />
+            <option value="$PROJECT_DIR$/Ecommerce-utils-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Ecommerce-utils-service" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Ecommerce-utils-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/pascaldev-admin-service" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/pascaldev-admin-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/pascaldev-configuration-service" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/pascaldev-configuration-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/pascaldev-descovery-service" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/pascaldev-descovery-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/pascaldev-gateway-service" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-8.10.2" />
+        <option name="gradleJvm" value="21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/pascaldev-gateway-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
