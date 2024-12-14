@@ -13,10 +13,12 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 /**
  * @author Pascal Dev
  */
@@ -26,26 +28,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class Order implements Serializable {
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Order  {
 	
 	
-	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
 	@SequenceGenerator(name = "order_seq", sequenceName = "order_seq", initialValue = 1, allocationSize = 1)
-	private Long id;
-	
+	Long id;
+
 	@NotNull
 	@Column(name = "userId")
-	private Long userId;
-	
+	Long userId;
+
 	@NotNull
 	@Column(name = "totalAmount")
-	private Double totalAmount;
-	
+	Double totalAmount;
+
 	@Column(name = "order_product_ids")
-	@ElementCollection
-	private List<Long> productIds;
+	List<Long> productIds;
 
 }

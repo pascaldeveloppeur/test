@@ -18,16 +18,19 @@ import com.pascaldev.Ecommerce_order_service.Dto.OrderDto;
 import com.pascaldev.Ecommerce_order_service.serviceImpl.OrderServiceImpl;
 import com.pascaldev.Ecommerce_utils_service.model.PascalDevException;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/orders")
 @Slf4j
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrderController {
 	
-	private final OrderServiceImpl orderServiceImpl;
+	 final OrderServiceImpl orderServiceImpl;
 	
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)

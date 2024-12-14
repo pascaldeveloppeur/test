@@ -18,16 +18,19 @@ import com.pascaldev.Ecommerce_order_service.repository.OrderRepository;
 import com.pascaldev.Ecommerce_order_service.service.OrderService;
 import com.pascaldev.Ecommerce_utils_service.model.PascalDevException;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrderServiceImpl implements OrderService {
 	
-	private final OrderRepository orderRepository;
-	private final ProductClient productClient;
+	 final OrderRepository orderRepository;
+	 final ProductClient productClient;
 
 	@Override
 	public OrderDto getById(Long id) {

@@ -14,6 +14,7 @@ public interface ProductClient {
 	@GetMapping("/api/products/{id}")
 	Product getProductById(@PathVariable("id") Long id);
 	
+	
 	@Data
 	class Product {
 		private Long id;
