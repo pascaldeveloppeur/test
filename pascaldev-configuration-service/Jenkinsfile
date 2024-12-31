@@ -25,7 +25,7 @@ pipeline {
 					doGenerateSubmoduleConfigurations: false,
 					extensions: [
 					[$class: 'CloneOption', depth: 1, noTags: true, reference: '', shallow: true, timeout: 120]],
-					submoduleCfg: [],userRemoteConfigs: [[credentialsId: 'e212babc-0713-415a-9848-da7292bb3718', url:
+					submoduleCfg: [],userRemoteConfigs: [[credentialsId: 'a6280c9b-a503-48e3-9c38-face160c8be6', url:
 					 'http://saas1402fu.saas-secure.com/git/bcephal-configuration-repository.git']]])
 				 }
 				 sh """ 
@@ -33,7 +33,7 @@ pipeline {
 				 """
 				//checkout([$class: 'GitSCM', branches: [[name: '*/master']],
                 //doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CloneOption', depth: 1, noTags: true, reference: '', shallow: true, timeout: 120]], 
-				//submoduleCfg: [],userRemoteConfigs: [[credentialsId: '5a607575-dcba-4ef3-8521-3b407f792647', url:
+				//submoduleCfg: [],userRemoteConfigs: [[credentialsId: 'a6280c9b-a503-48e3-9c38-face160c8be6', url:
                 // 'http://saas1402fu.saas-secure.com/git/bcephal-configuration-service.git']]])
 				 
 				 
